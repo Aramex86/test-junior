@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { Link } from 'react-router-dom';
 import { ProductsContext } from 'Context';
+import Home from 'components/common/Home';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 30,
       height: 30,
       fontSize: 12,
-      '&:hover': {
+     '&:hover': {
         color: '#000',
       },
     },
@@ -33,7 +34,22 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     noItems: {
       textAlign: 'center',
+      fontWeight:600,
+      fontSize:24,
+
     },
+    btnBack:{
+      display:'flex',
+      // justifyContent:'space-between',
+      alignItems:'baseline',
+      '& span':{
+        marginLeft:3,
+      }
+    },
+    tableHead:{
+      fontWeight:600,
+    }
+
   }),
 );
 
@@ -57,20 +73,21 @@ const ChartOfProducts = () => {
 
   return (
     <>
-      <Link to="/">
-        <Button variant="contained" color="primary">
-          Back
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Button variant="contained" color="primary" className={classes.btnBack}>
+          <Home size={'18'} color={'#fff'}/>
+          <span>back</span>
         </Button>
       </Link>
       <TableContainer component={Paper}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell sortDirection="desc">Categogy</TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Quantity</TableCell>
-              <TableCell align="right">Price</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell align='center' className={classes.tableHead}>Categogy</TableCell>
+              <TableCell align="right"className={classes.tableHead}>Name</TableCell>
+              <TableCell align="right"className={classes.tableHead}>Quantity</TableCell>
+              <TableCell align="right"className={classes.tableHead}>Price</TableCell>
+              <TableCell align="right"className={classes.tableHead}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -98,7 +115,7 @@ const ChartOfProducts = () => {
                 <TableCell align="center" />
                 <TableCell align="center" />
                 <TableCell align="center">
-                  <div className={classes.noItems}>No items</div>
+                  <div className={classes.noItems}>No items Yet !</div>
                 </TableCell>
                 <TableCell align="center" />
                 <TableCell align="center" />

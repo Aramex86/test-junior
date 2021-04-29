@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
 import { ProductsContext } from 'Context';
+import Cart from 'components/common/Cart';
 
 const useStyles = makeStyles({
   table: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   },
 
   button: {
-    background: '#55f555b5',
+    background: '#49dd49fa',
     color: '#fff',
     minWidth: 30,
     height: 30,
@@ -36,6 +37,9 @@ const useStyles = makeStyles({
   btnRemove: {
     background: '#ff0000a6',
   },
+  tableHead:{
+    fontWeight:600,
+  }
 });
 
 const ListOfProducts = () => {
@@ -61,23 +65,24 @@ const ListOfProducts = () => {
 
   return (
     <>
-      <Link to="/cart">
+      <Link to="/cart" style={{ textDecoration: 'none' }}>
         <Button variant="contained" color="primary" className={classes.btnCart}>
-          Cart
+          <Cart size={'18'} color={'#fff'} />
+          <span> Cart</span>
         </Button>
       </Link>
       <TableContainer component={Paper}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell align="right" onClick={handaleSort}>
+              <TableCell align="center" onClick={handaleSort} className={classes.tableHead}>
                 Categogy
               </TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right" onClick={handaleSort}>
+              <TableCell align="right" className={classes.tableHead}>Name</TableCell>
+              <TableCell align="right" onClick={handaleSort} className={classes.tableHead}>
                 Price
               </TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell align="right" className={classes.tableHead}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -93,7 +98,7 @@ const ListOfProducts = () => {
                     remove
                   </Button>{' '}
                   <Button className={classes.button} onClick={() => addItem(item.id)}>
-                    add
+                    add+
                   </Button>
                 </TableCell>
               </TableRow>
